@@ -39,29 +39,22 @@ namespace HomeWork_6
             switch (measurement1)
             {
                 case 1: //расчет групп
-                    List<int> numbers = new List<int>();
-                    List<List<int>> groups = new List<List<int>>();
-                    numbers = Enumerable.Range(1, n).ToList();
                     time = DateTime.Now; //время начала расчетов
-                    List<string> group = new List<string>();
-                    //StringBuilder str = new StringBuilder();
-                    string str = "";
+                    List<string> group = new List<string>();    
+                    StringBuilder str = new StringBuilder();
                     int j = 1;
                     int k = 0;
                     for (int i = 1; i <= n; i++)
                     {
-                        k++;
-                        str += $"{i} ";
-                        //str.Insert(k, i);
+                        str.Append(i + " ");
                         if ((i == (int)Math.Pow(2, j) - 1) || (i == n))
                         {
-                            //group.Add(str.ToString());
-                            group.Add(str);
-                            //str.Remove(0, 1);
-                            //str = "";
+                            group.Add(str.ToString());
+                            str.Remove(0, str.Length);
                             j++;
-                            //k = 0;
+                            k = 0;
                         }
+                        else k++;
                     }
                     TimeSpan timeSpan = DateTime.Now.Subtract(time); //время окончания расчетов
                     Console.WriteLine($"Время: {timeSpan.TotalMinutes}"); //вывод времени, потраченного на работу программы для расчета групп
